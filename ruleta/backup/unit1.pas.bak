@@ -1,0 +1,156 @@
+unit Unit1;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
+
+type
+
+  { TForm1 }
+
+  TForm1 = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Edit1: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Memo1: TMemo;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { private declarations }
+  public
+    { public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  bank, ruleta:textfile;
+  bet, number, choice, player, casino:integer;
+  win:boolean;
+
+implementation
+
+{$R *.lfm}
+
+{ TForm1 }
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+
+   if ((win=true) AND (bet<player))  then
+   begin
+   casino:=casino-2*bet;
+   player:=player+2*bet;
+   memo1.append(inttostr(player)+' '+inttostr(casino));
+   end
+   else
+    begin
+     if bet>player then
+     memo1.append('nemas penezi')
+     else
+      begin
+       casino:=casino+bet;
+       player:=player-bet;
+       memo1.append(inttostr(player)+' '+inttostr(casino));
+      end;
+    end;
+
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+   if edit1.text<>'' then
+     begin
+      bet:=strtoint(edit1.text);
+        choice:=2;
+        number:=random(35)+1;
+        if (number mod 2 =0) then
+        win:=true else
+          win:=false;
+      end
+   else memo1.append('Gimme some money, biatch!');
+   if number=0 then
+   win:=true;
+     label1.caption:=inttostr(casino);
+  label2.caption:=inttostr(player);
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+   if edit1.text<>'' then
+     begin
+        bet:=strtoint(edit1.text);
+      choice:=3;
+      number:=random(35)+1;
+      if (number mod 2 =1) then
+      win:=true else
+        win:=false;
+     end
+   else memo1.append('Gimme some money!');
+   if number=0 then
+   win:=true;
+     label1.caption:=inttostr(casino);
+  label2.caption:=inttostr(player);
+end;
+
+procedure TForm1.Button4Click(Sender: TObject);
+begin
+   if edit1.text<>'' then
+     begin
+        bet:=strtoint(edit1.text);
+        choice:=18;
+        number:=random(35)+1;
+        if ((number < 19) AND (number<>0) ) then
+        win:=true else
+          win:=false;
+
+       end
+      else memo1.append('Gimme some money!');
+      if number=0 then
+   win:=true;
+        label1.caption:=inttostr(casino);
+  label2.caption:=inttostr(player);
+end;
+
+procedure TForm1.Button5Click(Sender: TObject);
+begin
+   if edit1.text<>'' then
+     begin
+       bet:=strtoint(edit1.text);
+      choice:=19;
+      number:=random(35)+1;
+      if ((number>18) AND (number<>0)) then
+      win:=true
+       else
+        win:=false;
+     end
+       else memo1.append('Gimme some money!');
+       if number=0 then
+   win:=true;
+         label1.caption:=inttostr(casino);
+  label2.caption:=inttostr(player);
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  casino:=1000;
+  player:=500;
+  randomize;
+  win:=false;
+  label1.caption:=inttostr(casino);
+  label2.caption:=inttostr(player);
+end;
+
+end.
+
