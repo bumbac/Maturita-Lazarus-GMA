@@ -1,0 +1,54 @@
+object Form1: TForm1
+  Left = 1181
+  Height = 436
+  Top = 158
+  Width = 542
+  Caption = 'Form1'
+  ClientHeight = 436
+  ClientWidth = 542
+  OnCreate = FormCreate
+  LCLVersion = '1.6.0.4'
+  object Button1: TButton
+    Left = 304
+    Height = 25
+    Top = 75
+    Width = 75
+    Caption = 'Withdraw'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object Image1: TImage
+    Left = 143
+    Height = 220
+    Top = 157
+    Width = 289
+  end
+  object Button2: TButton
+    Left = 464
+    Height = 25
+    Top = 8
+    Width = 75
+    Caption = 'Reset'
+    OnClick = Button2Click
+    TabOrder = 1
+  end
+  object Label8: TLabel
+    Left = 101
+    Height = 20
+    Top = 13
+    Width = 40
+    Caption = '17700'
+    ParentColor = False
+  end
+  object Edit1: TEdit
+    Left = 184
+    Height = 28
+    Top = 75
+    Width = 80
+    NumbersOnly = True
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+    TextHint = 'Withdraw'
+  end
+end
